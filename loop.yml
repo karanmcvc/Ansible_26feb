@@ -4,8 +4,8 @@
   tasks: 
    - name: install multi package 
      apt: 
-      name: "{{itam}}"
-      state: present 
+       name: "{{itam}}"
+       state: present 
      loops: 
        - git 
        - tree 
