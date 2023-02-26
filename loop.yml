@@ -4,9 +4,9 @@
   tasks: 
   - name: install multi package 
     apt: 
-     name: "{{ item }}"
-     state: present 
+      name: "{{ item }}"
+      state: present 
     loops: 
-        - git 
-        - tree 
-        - wget  
+     - git 
+     - tree 
+     - wget  
