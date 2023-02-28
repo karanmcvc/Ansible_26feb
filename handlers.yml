@@ -1,3 +1,4 @@
+
 --- 
 - hosts: mywebservers
   become: yes
@@ -7,7 +8,7 @@
       name: "{{mywebpackageforubuntu}}"
       state: present 
      when: ansible_os_family=="Debian"
-
+     notify: restartedwebserver
 
    - name: i want to start my webserver 
      service:
@@ -20,10 +21,17 @@
       name: "{{mywebpackageforRedHat}}"
       state: present 
      when: ansible_os_family=="RedHat"
-
+     
 
    - name: i want to start RedHat server on ubuntu nodes
      service:
       name: "{{mywebpackageforRedHat}}"
       state: started 
-     when: ansible_os_family=="RedHat"
+     when: ansible_os_family=="RedHat" 
+
+  handlers: 
+    - name: restartedwebserver
+      service: 
+        name: apache2 
+        state: present 
+     
